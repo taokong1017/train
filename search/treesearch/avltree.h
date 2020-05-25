@@ -28,6 +28,7 @@ public:
 
 protected:
     Node<T>* RightRightRotate(Node<T>* root);
+    Node<T>* LeftLeftRotate(Node<T>* root);
 
 private:
     Node<T>* newNode(const T& data, size_t height, Node<T>* lchild, Node<T>* rchild);
