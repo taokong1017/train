@@ -7,7 +7,7 @@ template<typename T>
 struct TreeNode 
 {
     T value;
-    size_t height;
+    int height;
     TreeNode<T>* lChild;
     TreeNode<T>* rChlid;
 };
@@ -27,10 +27,11 @@ public:
     void printTree();
 
 protected:
-    Node<T>* RightR
+    Node<T>* RightRightRotate(Node<T>* root);
 
 private:
-    Node<T>* newNode(const T& data);
+    Node<T>* newNode(const T& data, size_t height, Node<T>* lchild, Node<T>* rchild);
+    size_t height(Node<T>* node) { return node == nullptr ? -1 : node->height;}
 
 private:
     Node<T>* root;

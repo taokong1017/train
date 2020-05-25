@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 25 2020 23:31:05 GMT+0800 (中国标准时间)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-25-4-2020-23-0-56.txt
+* .vscode/launch.json
+* .vscode/settings.json
+* search/treesearch/Makefile
+* search/treesearch/avltree.cpp
+* search/treesearch/avltree.h
+* search/treesearch/main.cpp
+* search/treesearch/test
+
+
+Deleted files:
+
+
+Renamed files:
