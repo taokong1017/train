@@ -19,23 +19,27 @@ template<typename T>
 class AvlTree
 {
 public:
-    AvlTree(){}
+    AvlTree();
     AvlTree(const std::vector<T>& list);
     virtual ~AvlTree(){}
     void addNode(const T& data);
     bool searchData(const T& target);
-    void printTree();
+    void printOrderTree();
 
 protected:
-    Node<T>* RightRightRotate(Node<T>* root);
-    Node<T>* LeftLeftRotate(Node<T>* root);
+    Node<T>* rightRightRotate(Node<T>* k1);
+    Node<T>* leftLeftRotate(Node<T>* k1);
+    Node<T>* leftRightRotate(Node<T>* k1);
+    Node<T>* rightLeftRotate(Node<T>* k1);
+    Node<T>* insertNode(Node<T>* root, const T& data);
+    void printOrderTree(Node<T>* root);
 
 private:
-    Node<T>* newNode(const T& data, size_t height, Node<T>* lchild, Node<T>* rchild);
-    size_t height(Node<T>* node) { return node == nullptr ? -1 : node->height;}
+    Node<T>* newNode(const T& data,  Node<T>* lchild = nullptr, Node<T>* rchild = nullptr, size_t height = 0);
+    inline size_t height(Node<T>* node) { return node == nullptr ? -1 : node->height;}
 
 private:
-    Node<T>* root;
+    Node<T>* mRoot;
 };
 
 
