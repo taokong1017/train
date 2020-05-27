@@ -45,6 +45,7 @@ protected:
     */
     Node<T>* rightRightRotate(Node<T>* k1)
     {
+        //std::cout << "rightRightRotate" << std::endl;
         Node<T>* k2 = k1->lChild;
         k1->lChild = k2->rChild;
         k2->rChild = k1;
@@ -62,6 +63,7 @@ protected:
     */
     Node<T>* leftLeftRotate(Node<T>* k1)
     {
+        //std::cout << "leftLeftRotate" << std::endl;
         Node<T>* k2 = k1->rChild;
         k1->rChild = k2->lChild;
         k2->lChild = k1;
@@ -81,6 +83,7 @@ protected:
     */
     Node<T>* leftRightRotate(Node<T>* k1)
     {
+        //std::cout << "leftRightRotate" << std::endl;
         k1->lChild = leftLeftRotate(k1->lChild);
         return rightRightRotate(k1);
     }
@@ -96,6 +99,7 @@ protected:
 
     Node<T>* rightLeftRotate(Node<T>* k1)
     {
+        //std::cout << "rightLeftRotate" << std::endl;
         k1->rChild = rightRightRotate(k1->rChild);
         return leftLeftRotate(k1);
     }
@@ -110,6 +114,7 @@ protected:
         } else {
             root->rChild = insertNode(root->rChild, data);
         }
+        root->height = std::max<int>(height(root->lChild), height(root->rChild)) + 1;
 
         /* adjust avl tree heigh, difference less than 2*/
         int lheight = height(root->lChild);
@@ -153,7 +158,7 @@ protected:
             return searchNode(root->rChild);
         }
     } 
-    bool removeNode(Node<T>* root, const T& data)
+    Node<T>* removeNode(Node<T>* root, const T& data)
     {
         if(!root) {
             return nullptr;
@@ -177,6 +182,8 @@ protected:
         } else {
             root->rChild = removeNode(root->rChild, data);
         }
+        root->height = std::max<int>(height(root->lChild), height(root->rChild)) + 1;
+
         /* adjust avl tree heigh, difference less than 2*/
         int lheight = height(root->lChild);
         int rheight = height(root->rChild);
@@ -194,6 +201,7 @@ protected:
                 root = leftLeftRotate(root);
             }
         }
+        return root;
     }
 
 private:
@@ -208,7 +216,7 @@ private:
         }
         return node;
     }
-    inline size_t height(Node<T>* node) { return node == nullptr ? -1 : node->height;}
+    inline size_t height(Node<T>* node) { return !node ? -1 : node->height;}
 
 private:
     Node<T>* mRoot;
