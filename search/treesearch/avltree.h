@@ -33,7 +33,7 @@ public:
     void addNode(const T& data){mRoot = insertNode(mRoot, data);}
     bool findTarget(const T& target) { return searchNode(mRoot, target);}
     void printOrderTree() { printOrderTree(mRoot);}
-    void removeData(const T& target) { removeNode(mRoot, target);}
+    void removeData(const T& target) { mRoot = removeNode(mRoot, target);}
 
 protected:
     /*
@@ -153,9 +153,9 @@ protected:
         if(data == root->value ) {
             return true;
         } else if (data < root->value ) {
-            return searchNode(root->lChlid);
+            return searchNode(root->lChild, data);
         } else {
-            return searchNode(root->rChild);
+            return searchNode(root->rChild, data);
         }
     } 
     Node<T>* removeNode(Node<T>* root, const T& data)

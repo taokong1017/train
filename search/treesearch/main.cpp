@@ -14,5 +14,21 @@ int main(int argc, char**argv)
 
     std::cout << "\nremove tree: " << std::endl;
     tree.printOrderTree();
+
+    int target = 11;
+    std::cout << "find data: " << target; 
+    if(tree.findTarget(target)) {
+        std::cout << " succeed"<< std::endl;
+    } else {
+        std::cout << " failed"<< std::endl;
+    }
+
+    target = 110;
+    std::cout << "find data: " << target; 
+    if(tree.findTarget(target)) {
+        std::cout << " succeed"<< std::endl;
+    } else {
+        std::cout << " failed"<< std::endl;
+    }
     return 0;
 }
