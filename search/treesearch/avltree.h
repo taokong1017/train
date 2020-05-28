@@ -32,9 +32,9 @@ public:
     virtual ~AvlTree(){}
     void addNode(const T& data){ mRoot = insertNode(mRoot, data);}
     bool findTarget(const T& target) { return searchNode(mRoot, target);}
-    void printOrderTree() { 
+    void printTree() { 
         if(!mRoot) return;
-        printOrderTree(mRoot, 0);
+        printTree(mRoot, 0);
     }
     void removeData(const T& target) { mRoot = removeNode(mRoot, target);}
 
@@ -138,16 +138,16 @@ protected:
         }
         return root;
     }
-    void printOrderTree(Node<T>* root, int layer)
+    void printTree(Node<T>* root, int layer)
     {
         if(root) {
-            /* print data assending order */
-            printOrderTree(root->rChild, layer+1);
+            /* print data as tree structure */
+            printTree(root->rChild, layer+1);
             for(int i=0; i< layer; i++) {
                 std::cout << "    ";
             }
             std::cout << root->value << std::endl;
-            printOrderTree(root->lChild, layer+1);
+            printTree(root->lChild, layer+1);
         }
     }
     bool searchNode(Node<T>* root, const T& data)
