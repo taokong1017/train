@@ -30,9 +30,12 @@ public:
         }
     }
     virtual ~AvlTree(){}
-    void addNode(const T& data){mRoot = insertNode(mRoot, data);}
+    void addNode(const T& data){ mRoot = insertNode(mRoot, data);}
     bool findTarget(const T& target) { return searchNode(mRoot, target);}
-    void printOrderTree() { printOrderTree(mRoot);}
+    void printOrderTree() { 
+        if(!mRoot) return;
+        printOrderTree(mRoot, 0);
+    }
     void removeData(const T& target) { mRoot = removeNode(mRoot, target);}
 
 protected:
@@ -135,13 +138,16 @@ protected:
         }
         return root;
     }
-    void printOrderTree(Node<T>* root)
+    void printOrderTree(Node<T>* root, int layer)
     {
         if(root) {
             /* print data assending order */
-            printOrderTree(root->lChild);
-            std::cout << "value: " << root->value << ", height: " << root->height << std::endl;
-            printOrderTree(root->rChild);
+            printOrderTree(root->rChild, layer+1);
+            for(int i=0; i< layer; i++) {
+                std::cout << "    ";
+            }
+            std::cout << root->value << std::endl;
+            printOrderTree(root->lChild, layer+1);
         }
     }
     bool searchNode(Node<T>* root, const T& data)
