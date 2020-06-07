@@ -9,6 +9,6 @@ int main(int argc, char**argv)
     g.addEdge(0, 2, 1);
     g.removeEdge(0, 2);
     Graph<int>::AdjInfoList adjList = g.findAdjInfoList(0);
-
+    std::cout << g.adjVertexNumber(0) << std::endl;
     return 0;
 }

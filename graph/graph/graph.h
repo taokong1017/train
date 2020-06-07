@@ -97,6 +97,16 @@ public:
             return AdjInfoList();
         }
     }
+
+    int adjVertexNumber(int u) const {
+        auto uIter = std::find_if(mAdjList.begin(), mAdjList.end(), [&](VertexAdjList Iu){return Iu.first == u;});
+        if(uIter != mAdjList.end()){
+            return uIter->second.size();
+        } else {
+            return 0;
+        }
+    }
+
 private:
     std::vector<VertexAdjList> mAdjList;
 };
