@@ -32,7 +32,7 @@ public:
 public:
     Graph(){}
     virtual ~Graph(){}
-    inline const int& vertexNumber() const {return mAdjList.size();}
+    inline size_t vertexNumber() const {return mAdjList.size();}
     bool isEdge(int u, int v)
     {
         for(auto & adjList : mAdjList) {
