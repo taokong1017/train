@@ -1,5 +1,5 @@
 all:
-	g++ graph.h main.cpp -O2 -g -Wall -o test -std=c++11
+	g++ graph.h main.cpp -o0 -g -Wall -o test -std=c++2a
 
 clean:
 	rm -rf test
