@@ -82,11 +82,11 @@ int main(int argc, char**argv)
     prevList = new int[vNum];
     visitedList = new bool[vNum];
     depthFirstSearch(g, 0);
-    std::vector<int> sp = path(g, 1, 6);
+    std::vector<int> p = path(g, 1, 6);
     std::cout << "path 3 -> 7 : ";
-    while(!sp.empty()) {
-        std::cout << sp.back() << " ";
-        sp.pop_back();
+    while(!p.empty()) {
+        std::cout << p.back() << " ";
+        p.pop_back();
     }
     std::cout << std::endl;
     delete[] prevList;
