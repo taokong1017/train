@@ -35,11 +35,37 @@ void depthFirstSearch(Graph<T>g, int u)
     }
 }
 
-void path(int s, int d)
+template<typename T>
+std::vector<int> path(Graph<T>g, int s, int d)
 {
-    
+    std::vector<int> sp;
+    bool fs = visitedList[s];
+    bool fd = visitedList[d];
+    bool found = false;
+    int v = d;
+    if(fs && fd) {
+        while(visitedList[v]) {
+            sp.push_back(v);
+            if (v == s) {
+                found = true;
+                break;
+            }
+            v = prevList[v];
+        }
+        if(!found) {
+            sp.clear();
+        }
+    }
+    return sp;
 }
-
+/*
+*     0 ----> 1 -----> 2 -----> 4
+*     |       \                  \
+*     |        >                  >
+*     |         3 ----> 5 -------- 6 ---- 7
+*     |                                   |
+*      ----------------------------------<
+*/
 int main(int argc, char**argv)
 {
     Graph<int> g;
@@ -56,7 +82,13 @@ int main(int argc, char**argv)
     prevList = new int[vNum];
     visitedList = new bool[vNum];
     depthFirstSearch(g, 0);
-    path(0, 7);
+    std::vector<int> sp = path(g, 7, 0);
+    std::cout << "path 3 -> 7 : ";
+    while(!sp.empty()) {
+        std::cout << sp.back() << " ";
+        sp.pop_back();
+    }
+    std::cout << std::endl;
     delete[] prevList;
     delete[] visitedList;
     return 0;
