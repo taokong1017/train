@@ -10,19 +10,6 @@ template<typename T>
 class Graph
 {
 public:
-    enum VertexColor
-    {
-        White,
-        Gray,
-        Black,
-    };
-    enum EdgeType
-    {
-        Tree,
-        Backward,
-        Forward,
-        Cross,
-    };
     //对于每个顶点u，将权值为w的边(u, v)的信息(v, w)存放于此
     using AdjInfo = std::pair<int, T>;
     //顶点的邻接表
@@ -107,6 +94,7 @@ public:
         }
     }
 
+    const std::vector<VertexAdjList> VertexAdjListList() const {return mAdjList;}
 private:
     std::vector<VertexAdjList> mAdjList;
 };
