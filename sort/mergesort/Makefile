@@ -10,7 +10,7 @@ INCS := -Isrc
 LIBS :=
 
 # FLAGS
-CXXFLAGS = -g -Wall -Isrc
+CXXFLAGS = -O0 -g -Wall -Isrc -std=c++11
 LDDFLAGS =
 
 # 目录

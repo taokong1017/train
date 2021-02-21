@@ -40,27 +40,3 @@ include $(DEPS)
 clean:
 	$(RM) $(EXE) $(OBJS) $(DEPS)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
